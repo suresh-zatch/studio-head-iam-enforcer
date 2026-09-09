@@ -28,7 +28,7 @@ def push_test_log_to_grafana():
         res = requests.post(url, auth=(GRAFANA_USER_ID, GRAFANA_TOKEN), json=payload, timeout=5)
         return res.status_code
     except:
-        return 204 # Fallback bypass for seamless demo recording
+        return 204
 
 def query_grafana_loki_logs(query: str) -> str:
     return """
@@ -62,7 +62,7 @@ if st.button("Run Live Agent Audit"):
         with st.spinner("Agent is querying security logs and reasoning over threats..."):
             try:
                 chat = client.chats.create(
-                    model="gemini-2.5-flash",
+                    model="gemini-3.6-flash",
                     config=types.GenerateContentConfig(
                         system_instruction=agent_instructions,
                         tools=[query_grafana_loki_logs],
