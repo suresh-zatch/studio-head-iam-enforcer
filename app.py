@@ -41,7 +41,7 @@ if st.button("Run Security Audit on VFX Pipeline"):
         
         # The google-genai SDK handles function calling automatically!
         chat = client.chats.create(
-            model="gemini-2.5-flash",
+            model="gemini-1.5-flash",
             config=types.GenerateContentConfig(
                 system_instruction=agent_instructions,
                 tools=[query_grafana_loki_logs],
